@@ -8,6 +8,7 @@ const {
   shell,
   dialog
 } = require('electron')
+const path = require('node:path')
 
 const menu = new Menu()
 menu.append(new MenuItem({ label: 'Hello' }))
@@ -294,8 +295,7 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true
+      preload: path.join(__dirname, 'preload.js')
     }
   })
 
